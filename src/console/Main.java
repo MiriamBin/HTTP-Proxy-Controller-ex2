@@ -5,16 +5,34 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        CommandFactory commandFactory = new CommandFactory();
         try {
             Scanner scanner = new Scanner(System.in);
-            String commandInput;
-            commandInput = scanner.next(); // TODO: create class for checking KOSHER input
+            String commandInput = "";
 
             while (!commandInput.equals("q")) {
-                Command command = commandFactory.getCommand(commandInput);
-                command.execute();
-                commandInput = scanner.next();
+                commandInput = scanner.nextLine();
+                String[] commandArgs = commandInput.split("\\s+"); // split by whitespace
+
+                switch (commandArgs[0]) {
+                    case "b":
+                        Block block = new Block();
+                        block.execute();
+                        break;
+                    case "u":
+                        Unblock unblock = new Unblock();
+                        unblock.execute();
+                        break;
+                    case "d":
+                        Download download = new Download();
+                        download.execute();
+                        break;
+                    case "p":
+                        //Print print = new Print();
+                    default:
+                        System.out.println("Invalid command");
+                        break;
+                }
+
             }
         }
         catch (Exception e)

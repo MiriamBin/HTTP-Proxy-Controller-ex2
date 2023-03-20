@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class CommandFactory {
+public class ConsoleMenu {
     private final Map<String, Supplier<Command>> map = new HashMap<>(); //add interface Command
 
-    CommandFactory() {
+    ConsoleMenu() {
         addCommand("b", Block::new);
         addCommand("u", Unblock::new);
         addCommand("d", Download::new);
