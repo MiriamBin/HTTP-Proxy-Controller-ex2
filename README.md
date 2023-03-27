@@ -16,7 +16,7 @@ also we used factory design pattern to create the commands objects and to make s
 and we used command design pattern for the options of the download command.
 
 <h2>Remarks</h2>
-Any kind of withe space in the command will be ignored - including space as command.
+Any kind of white space in the command will be ignored - including space as command.
 A local data structure to make searching and sorting easier
 
 
