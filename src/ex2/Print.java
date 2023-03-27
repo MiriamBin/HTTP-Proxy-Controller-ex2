@@ -1,4 +1,4 @@
-package consoleController;
+package ex2;
 import java.util.Set;
 
 class Print implements Command {

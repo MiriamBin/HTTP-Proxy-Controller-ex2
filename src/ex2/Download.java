@@ -1,6 +1,5 @@
-package consoleController;
+package ex2;
 import java.io.IOException;
-import java.util.*;
 
 public class Download implements Command {
 

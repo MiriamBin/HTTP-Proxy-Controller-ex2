@@ -1,4 +1,4 @@
-package consoleController;
+package ex2;
 
 class Block implements Command {
     private final String url;

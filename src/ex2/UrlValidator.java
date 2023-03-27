@@ -1,4 +1,4 @@
-package consoleController;
+package ex2;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;

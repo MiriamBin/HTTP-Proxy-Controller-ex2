@@ -1,4 +1,4 @@
-package consoleController;
+package ex2;
 
 public class DenyAccess implements DenyOption {
     @Override
