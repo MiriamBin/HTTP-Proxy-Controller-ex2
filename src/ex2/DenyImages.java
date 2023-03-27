@@ -19,10 +19,10 @@ public class DenyImages implements DenyOption {
         blockImages(connection);
     }
 
-    /**
-     * block images
-     * @param contentType - the content type to check if it is an image
-     * @throws Exception - if the DenyOption failed
+  /**
+     * check if the content type is an image
+     * @param contentType - the content type to check
+     * @return true if the content type is an image, false otherwise
      */
     public static boolean isImage(String contentType) {
         return contentType != null && contentType.startsWith("image/");

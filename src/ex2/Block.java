@@ -4,7 +4,13 @@ package ex2;
  * Block class - implements Command interface
  */
 class Block implements Command {
+    /**
+     * The url to block
+     */
     private final String url;
+    /**
+     * The url validator
+     */
     private final UrlValidator urlValidator = new UrlValidator();
 
     /**

@@ -1,5 +1,8 @@
 package ex2;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.*;
 import java.io.IOException;
 
@@ -23,7 +26,18 @@ public class ContentDownloader {
             }
         }
 
-        //TODO: Download content....
+        // Download the content and write it to a file
+        try (InputStream inputStream = connection.getInputStream();
+             OutputStream outputStream = new FileOutputStream(outputFile)) {
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+        } catch (IOException e) {
+            // Handle any errors that occur during the download
+            throw new Exception("cannot write output file");
+        }
     }
 
     /**
@@ -49,7 +63,7 @@ public class ContentDownloader {
             }
         }
         catch (IOException e) {
-            throw new Exception("invalid url");
+            throw new Exception("invalid URL");
         }
         return con;
     }

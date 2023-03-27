@@ -15,30 +15,19 @@ public class DenyHtml implements DenyOption {
      */
     @Override
     public void execute(HttpURLConnection connection) throws Exception {
-        System.out.println("BlockHtml.execute");
+        blockHtmlHttpResponse(connection);
     }
     /**
      * block HTML content
-     * @param urlString - the URL to block HTML content on
+     * @param connection - the connection to url
      * @throws Exception - if the URL is invalid or HTML is found
      */
-    public static void blockHtmlHttpResponse(String urlString) throws Exception {
-        try {
-            URL url = new URL(urlString);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+    public void blockHtmlHttpResponse(HttpURLConnection connection) throws Exception {
+        String contentType = connection.getHeaderField("Content-Type");
 
-            // Make the HTTP request and retrieve the response code and headers
-            conn.connect();
-            int responseCode = conn.getResponseCode();
-            Map<String, List<String>> headers = conn.getHeaderFields();
-
-            // Check if the response contains HTML content
-            if (headers.containsKey("Content-Type") && headers.get("Content-Type").contains("text/html")) {
-                throw new Exception("denied");
-            }
-        }
-        catch (IOException e) {
-            throw new Exception("invalid URL");
+        // Check if the response contains HTML content
+        if (contentType != null && contentType.contains("text/html")) {
+            throw new Exception("denied");
         }
     }
 }

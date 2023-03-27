@@ -1,0 +1,16 @@
+# ex2
+
+<h3>Miriam Binyamines</h3>
+<h5>Email: miriamman@edu.hac.ac.il</h5>
+
+<h3>Salomon Demma</h3>
+<h5>Email: dennasa@edu.hac.ac.ill</h5>
+
+<h1>Counter Program </h1>
+<a href="ex2-java-neviim-ex2_salomon_demma_miriam_binyamines/doc/ex2/package-summary.html">API documentation</a>
+
+<h2>Console URL Program </h2>
+
+we choose to use the desing pattern "singleton" to create the object of the class "Console" and to make sure that there is only one instance of the class "blocked list" in the program.
+also we used factory design pattern to create the commands objects and to make sure that the program will be easy to add new commands in the future.
+and we used command design pattern for the options of the download command.
