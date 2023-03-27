@@ -19,6 +19,7 @@ and we used command design pattern for the options of the download command.
 eny kind of withe space in the command will be ignored - including space as command.
 A local data structure to make searching and sorting easier
 
+
 <h2>Tests </h2>
 b https://en.wikipedia.org/wiki/Main_Page
 b https://en.wikipedia.org/wiki/Main_Page1
