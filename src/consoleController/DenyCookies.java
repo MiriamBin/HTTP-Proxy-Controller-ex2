@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 public class DenyCookies implements DenyOption {
-
     @Override
     public void execute(String url) throws Exception {
         System.out.println(url + "DenyCookies.execute");
