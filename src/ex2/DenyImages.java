@@ -4,31 +4,40 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * deny images option
+ */
 public class DenyImages implements DenyOption {
 
+    /**
+     * execute the DenyOption
+     * @param connection - the connection to execute the DenyOption on
+     * @throws Exception - if the DenyOption failed
+     */
     @Override
-    public void execute(String url) throws Exception {
-        System.out.println(url + "DenyImages.execute");
-                //blockImages(url);
+    public void execute(HttpURLConnection connection) throws Exception {
+        blockImages(connection);
     }
 
+    /**
+     * block images
+     * @param contentType - the content type to check if it is an image
+     * @throws Exception - if the DenyOption failed
+     */
     public static boolean isImage(String contentType) {
         return contentType != null && contentType.startsWith("image/");
     }
 
-    // not sure if this is the best way to do this *********************************
-    public static void blockImages(String urlStr) throws Exception {
-        HttpURLConnection connection;
-        try {
-            URL url = new URL(urlStr);
-            connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("HEAD");
-            String contentType = connection.getContentType();
-            if (isImage(contentType)) {
-                throw new Exception("denied");
-            }
-        } catch (IOException e) {
-            throw new Exception("invalid URL");
+    /**
+     * block images
+     * @param connection - the connection to block images on
+     * @throws Exception - if the DenyOption failed
+     */
+    public static void blockImages(HttpURLConnection connection) throws Exception {
+
+        String contentType = connection.getContentType();
+        if (isImage(contentType)) {
+            throw new Exception("denied");
         }
     }
 }

@@ -3,10 +3,17 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * console controller
+ */
 public class ConsoleController {
     private final CommandFactory commandFactory = new CommandFactory();
     private final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * run the console controller
+     * @throws Exception - if the command failed
+     */
     public void run() throws Exception {
         registerAllCommands();
 
@@ -26,19 +33,26 @@ public class ConsoleController {
                 if (command != null) {
                     command.execute();
                 }
-            } catch (Exception | IOException e) {
+            }
+            catch (Exception | IOException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
     }
-
+    /**
+     * register all the commands
+     * @throws Exception - if there is a problem with the command
+     */
     private void registerAllCommands() throws Exception{
         this.commandFactory.register("b", Block::new);
         this.commandFactory.register("u", Unblock::new);
         this.commandFactory.register("p", Print::new);
         this.commandFactory.register("d", Download::new);
     }
-
+    /**
+     * read command from the user
+     * @return the input
+     */
     private String readConsoleInput() {
         String input = "";
         while (input.isEmpty()) {
@@ -47,6 +61,11 @@ public class ConsoleController {
         return input;
     }
 
+    /**
+     * parse the command from the user input - for getting the parts of the command
+     * @param input - the input
+     * @return the command
+     */
     private String[] parseCommand(String input) {
         return input.split("\\s+");
     }

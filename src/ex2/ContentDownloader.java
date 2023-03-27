@@ -1,34 +1,37 @@
 package ex2;
 
-import java.io.IOException;
 import java.net.*;
+import java.io.IOException;
 
-import java.net.HttpURLConnection;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
+import java.net.HttpURLConnection;
 
-
+/**
+ * ContentDownloader class
+ */
 public class ContentDownloader {
-    //List <Options> ;
-
-
-
-    public ContentDownloader(){
-
-    }
+    public ContentDownloader(){}
     public void doDownload(String sourceUrl, String inputOption, String outputFile) throws IOException, Exception {
         // -bi
         HttpURLConnection connection = buildConnectionObject(sourceUrl);
-        List<DenyOption>  optionsList = parseOptions(inputOption);
 
+        if(inputOption != null) {
+            List<DenyOption> optionsList = parseOptions(inputOption);
+            for (DenyOption option : optionsList) {
+                option.execute(connection);
+            }
+        }
 
-         for (DenyOption option : optionsList) {
-             option.execute("Hello from ");
-         }
-
+        //TODO: Download content....
     }
 
-
+    /**
+     * build the connection object
+     * @param sourceUrl - the url to connect to
+     * @return the connection object
+     * @throws Exception - if the connection failed
+     */
     private HttpURLConnection buildConnectionObject(String sourceUrl) throws Exception {
         HttpURLConnection con;
         try {
@@ -44,18 +47,33 @@ public class ContentDownloader {
             if (responseCode != HttpURLConnection.HTTP_OK) {
                 throw new Exception(String.valueOf(responseCode));
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             throw new Exception("invalid url");
         }
-
         return con;
     }
 
+    /**
+     * parse the options - to get the list of options
+     * @param optionsString - the options string
+     * @return the list of options
+     * @throws Exception - if the options are invalid
+     */
     private List<DenyOption> parseOptions(String optionsString) throws Exception {
+
+        if(!optionsString.startsWith("-") && optionsString.length() > 0)
+            throw new Exception("invalid command");
+
+        optionsString = optionsString.replace("-","");
 
         List<DenyOption> options = new ArrayList<>();
 
-
+        /**
+         * for each char in the options string
+         * create the relevant DenyOption object
+         * and add it to the list
+         */
         for (char optionAsChar : optionsString.toCharArray()) {
 
             switch (optionAsChar) {

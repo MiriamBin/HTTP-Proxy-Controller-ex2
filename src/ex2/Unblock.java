@@ -1,40 +1,28 @@
 package ex2;
 
-//TODO:
-//import java.net.MalformedURLException;
-//import java.net.URISyntaxException;
-//import java.net.URL;
-
+/**
+ * Unblock url class
+ */
 class Unblock implements Command {
     private final String url;
+    /**
+     * Constructor
+     * @param args - the command arguments
+     * @throws IllegalArgumentException - if the arguments are invalid
+     */
     public Unblock(String[] args) throws IllegalArgumentException {
         if (args.length != 1) {
-            throw new IllegalArgumentException("Invalid number of arguments");
+            throw new IllegalArgumentException("invalid command");
         }
         this.url = args[0];
     }
-
+    /**
+     * execute the command - unblock the url - delete it from the blocked list
+     */
     @Override
     public void execute() {
         if (BlockedList.getInstance().isUrlBlocked(url)) {
             BlockedList.getInstance().unblockUrl(url);
         }
     }
-
-//TODO:  ASK Solange
-//    public Unblock(String[] args) throws Exception {
-//        if (args.length != 1) {
-//            throw new IllegalArgumentException("Invalid number of arguments");
-//        }
-//        this.url = urlValidator(args[0]);
-//    }
-//    public String urlValidator(String url) throws Exception {
-//        try {
-//            new URL(url).toURI();
-//        }
-//        catch (URISyntaxException | MalformedURLException e) {
-//            throw new Exception("invalid URL");
-//        }
-//        return url;
-//    }
 }
