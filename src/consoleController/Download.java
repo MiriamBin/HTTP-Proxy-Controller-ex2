@@ -1,47 +1,40 @@
 package consoleController;
+import java.io.IOException;
+import java.util.*;
 
-class Download implements Command {
+public class Download implements Command {
 
-//    private String url;
-//    private String outputFile;
-////    private List<DenyOption> options;
-//
-//    public Download(String[] args) {
-//        if (args.length != 3) {
-//            throw new IllegalArgumentException("Invalid number of arguments");
-//        }
-//
-//        this.url = args[1];
-//        this.outputFile = args[2];
-//        // TODO: add options
-////        this.options = parseOptions(args[0]);
-//    }
+    private String options = null;
+    private String url = null;
+    private String outputFile = null;
 
-    public void execute() {
+    public Download(String[] args) throws IllegalArgumentException {
+        if (2 > args.length || 3 < args.length) {
+            throw new IllegalArgumentException("invalid command");
+        }
+        //TODO: ADD VALIDATION
+
+        if(2 == args.length)
+        {
+            this.options = args[0];
+            this.url = args[1];
+        }
+
+        if(3 == args.length)
+        {
+            this.options = args[0];
+            this.url = args[1];
+            this.outputFile = args[2];
+        }
+    }
+
+    public void execute() throws Exception, IOException {
+
+        ContentDownloader downloader = new ContentDownloader();
+        downloader.doDownload(this.url, this.options, this.outputFile);
+
+
     }
 
 
-/*
-    @Override
-    public void execute() {
-        HTTPDownloader downloader = new HTTPDownloader();
-        boolean isDenied = false;
-
-        for (DenyOption option : options) {
-            if (option.shouldDeny(url)) {
-                System.out.println("denied");
-                isDenied = true;
-                break;
-            }
-        }
-
-        if (!isDenied) {
-            if (downloader.download(url, outputFile)) {
-                System.out.println("Downloaded: " + url);
-            } else {
-                System.out.println("cannot write output file");
-            }
-        }
-    }
-*/
 }
