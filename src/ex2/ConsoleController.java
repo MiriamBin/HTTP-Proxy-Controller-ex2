@@ -20,7 +20,7 @@ public class ConsoleController {
         while (true) {
             String input = readConsoleInput();
 
-            if (input.equalsIgnoreCase("q")) {
+            if (input.equalsIgnoreCase(Consts.KEY_QUIT_COMMAND)) {
                 break;
             }
 
@@ -44,10 +44,10 @@ public class ConsoleController {
      * @throws Exception - if there is a problem with the command
      */
     private void registerAllCommands() throws Exception{
-        this.commandFactory.register("b", Block::new);
-        this.commandFactory.register("u", Unblock::new);
-        this.commandFactory.register("p", Print::new);
-        this.commandFactory.register("d", Download::new);
+        this.commandFactory.register(Consts.KEY_BLOCK_COMMAND, Block::new);
+        this.commandFactory.register(Consts.KEY_UNBLOCK_COMMAND, Unblock::new);
+        this.commandFactory.register(Consts.KEY_PRINT_COMMAND, Print::new);
+        this.commandFactory.register(Consts.KEY_DOWNLOAD_COMMAND, Download::new);
     }
     /**
      * read command from the user

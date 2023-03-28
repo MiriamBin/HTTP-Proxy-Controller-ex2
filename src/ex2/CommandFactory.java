@@ -40,7 +40,7 @@ public class CommandFactory {
      */
     public Command createCommand(String commandKey, String[] commandArgs) throws Exception {
         if (!commandCreators.containsKey(commandKey)) {
-            throw new Exception("invalid command");
+            throw new Exception(Consts.INVALID_COMMAND);
         }
         return commandCreators.get(commandKey).apply(commandArgs);
     }

@@ -1,8 +1,6 @@
 package ex2;
 
-import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.URL;
 
 /**
  * deny images option
@@ -37,7 +35,7 @@ public class DenyImages implements DenyOption {
 
         String contentType = connection.getContentType();
         if (isImage(contentType)) {
-            throw new Exception("denied");
+            throw new Exception(Consts.DENIED_ACCESS);
         }
     }
 }

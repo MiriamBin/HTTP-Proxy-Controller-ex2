@@ -1,8 +1,5 @@
 package ex2;
 import java.net.*;
-import java.io.*;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Deny HTML content
@@ -27,7 +24,7 @@ public class DenyHtml implements DenyOption {
 
         // Check if the response contains HTML content
         if (contentType != null && contentType.contains("text/html")) {
-            throw new Exception("denied");
+            throw new Exception(Consts.DENIED_ACCESS);
         }
     }
 }

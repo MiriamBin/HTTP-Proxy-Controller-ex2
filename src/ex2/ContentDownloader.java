@@ -36,7 +36,7 @@ public class ContentDownloader {
             }
         } catch (IOException e) {
             // Handle any errors that occur during the download
-            throw new Exception("cannot write output file");
+            throw new Exception(Consts.CANNOT_WRITE_OUTPUT_FILE);
         }
     }
 
@@ -63,7 +63,7 @@ public class ContentDownloader {
             }
         }
         catch (IOException e) {
-            throw new Exception("invalid URL");
+            throw new Exception(Consts.INVALID_URL);
         }
         return con;
     }
@@ -77,7 +77,7 @@ public class ContentDownloader {
     private List<DenyOption> parseOptions(String optionsString) throws Exception {
 
         if(!optionsString.startsWith("-") && optionsString.length() > 0)
-            throw new Exception("invalid command");
+            throw new Exception(Consts.INVALID_COMMAND);
 
         optionsString = optionsString.replace("-","");
 
@@ -104,37 +104,10 @@ public class ContentDownloader {
                     options.add(new DenyCookies());
                     break;
                 default:
-                    throw new Exception("invalid command");
+                    throw new Exception(Consts.INVALID_OPTION);
             }
         }
         return options;
     }
-
-//    public Command parse(String[] args) {
-        // Parse the command and arguments from args
-  //      String options = args[0];
-
-    //    DenyOption baseOption = null;
-//        // Create the base DenyOption object
-//        DenyOption baseOption = new DenyBlockedSites();
-//
-//        // Wrap the base DenyOption with decorators based on the provided options
-//        if (options.contains("i")) {
-//            baseOption = new DenyImages(baseOption);
-//            //baseOption = new DenyImagesDecorator(baseOption);
-//        }
-//        if (options.contains("h")) {
-//            baseOption = new DenyHTML(baseOption);
-//            //baseOption = new DenyHTMLDecorator(baseOption);
-//        }
-//        if (options.contains("c")) {
-//            baseOption = new DenyCookies(baseOption);
-//            //baseOption = new DenyCookiesDecorator(baseOption);
-//        }
-
-        // Create the Download command with the decorated DenyOption
-        //return new Download(args, baseOption);
-//        DenyOption
-//    }
 }
 

@@ -27,7 +27,7 @@ public class DenyAccess implements DenyOption {
         String url = connection.getURL().toString();
         for (String blockedUrl : blockedUrls) {
             if (url.equals(blockedUrl) || blockedUrl.startsWith(url)) {
-                throw new Exception("denied");
+                throw new Exception(Consts.DENIED_ACCESS);
             }
         }
     }

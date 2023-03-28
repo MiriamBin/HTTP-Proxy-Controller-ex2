@@ -12,7 +12,7 @@ class Print implements Command {
      */
     public Print(String[] args) throws IllegalArgumentException {
         if (args.length != 0) {
-            throw new IllegalArgumentException("invalid command");
+            throw new IllegalArgumentException(Consts.INVALID_COMMAND);
         }
     }
     /**

@@ -26,7 +26,7 @@ public class Download implements Command  {
             this.outputFile = args[2];
         }
         else {
-            throw new IllegalArgumentException("invalid command");
+            throw new IllegalArgumentException(Consts.INVALID_COMMAND);
         }
     }
     /**

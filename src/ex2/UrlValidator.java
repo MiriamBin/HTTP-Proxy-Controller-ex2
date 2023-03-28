@@ -18,7 +18,7 @@ public class UrlValidator implements BaseValidator {
             new URL(url).toURI();
         }
         catch (URISyntaxException | MalformedURLException e) {
-            throw new Exception("invalid URL");
+            throw new Exception(Consts.INVALID_URL);
         }
         return true;
     }

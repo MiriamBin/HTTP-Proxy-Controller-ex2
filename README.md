@@ -21,20 +21,32 @@ A local data structure to make searching and sorting easier
 
 
 <h2>Tests </h2>
-b https://en.wikipedia.org/wiki/Main_Page
-b https://en.wikipedia.org/wiki/Main_Page1
-b https://en.wikipedia.org/wiki/Main_Page2
-b https://en.wikipedia.org/wiki/Main_Page3
 p
-u https://en.wikipedia.org/wiki/Main_Page
+d https://www.wikipedia.org/ out.html
+u https://www.wikipedia.org/
+k
+b https://www.wikipedia.org/
+d -cb https://www.wikipedia.org/ out2.html
+d -bc https://www.wikipedia.org/ out3.html
+d https:/en.wikipedia.org/wiki/Main_Page
+d -bci https://www.google.com/search?q=moodle&rlz=1C1GCEA_enIL1015IL1015&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiG2Yq2pvn9AhVBnVwKHZkNCbYQ_AUoAXoECAEQAw&biw=1920&bih=929&dpr=1#imgrc=-Pl0ssMV1S6bcM out4.html
+d -bkc https://www.wikipedia.org/ out3.html
+d https://mow out5.html
+d -bc https://google.com
+b
+u
+b
+b  
+-b
+u jibrish
 p
-d -b https://en.wikipedia.org/wiki/Main_Page wiki.html
-d -i https://en.wikipedia.org/wiki/Main_Page wiki.html
-d -hi https://en.wikipedia.org/wiki/Main_Page wiki.html
-d -ih https://en.wikipedia.org/static/images/mobile/copyright/wikipedia-wordmark-en.svg img.svg
-d https:/en.wikipedia.org/wiki/Main_Page wiki.html
-d i https://en.wikipedia.org/wiki/Main_Page abc
-d -ik https://en.wikipedia.org/wiki/Main_Page abc
-d -ch https://www.w3schools.com/codeeditor.gif codeeditor.gif
-p
-q
+d -ccccccch       https://www.youtube.com       out6.html
+d       https://www.youtube.com       out7.html
+b     https://www.youtube.com
+B https://www.youtube.com
+P
+U https://www.wikipedia.org/
+d https://www.foo.software/api/v2 out8
+d https://catfact.ninja/fact out9
+d https://www.wikipedia.org/ out9
+d - https://www.wikipedia.org/ out10

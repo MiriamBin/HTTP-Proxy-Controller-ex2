@@ -41,7 +41,7 @@ public final class BlockedList {
                 blockedUrls.addAll(lines);
             }
         } catch (IOException e) {
-            System.out.println("cannot read blocked.txt");
+            System.out.println(Consts.CANNOT_READ);
         }
     }
 
@@ -52,7 +52,7 @@ public final class BlockedList {
         try {
             Files.write(Paths.get(BLOCKED_FILE), blockedUrls);
         } catch (IOException e) {
-            System.out.println("cannot write blocked.txt");
+            System.out.println(Consts.CANNOT_WRITE);
         }
     }
 

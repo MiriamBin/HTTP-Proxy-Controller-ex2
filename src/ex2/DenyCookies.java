@@ -29,7 +29,7 @@ public class DenyCookies implements DenyOption {
         // Check if the response contains cookies in the headers
         if (headers.containsKey("Set-Cookie")) {
             // If cookies are found, throw an exception to indicate that the response should be blocked
-            throw new Exception("denied");
+            throw new Exception(Consts.DENIED_ACCESS);
         }
     }
 }

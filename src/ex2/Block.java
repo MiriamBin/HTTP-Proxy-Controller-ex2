@@ -20,7 +20,7 @@ class Block implements Command {
      */
     public Block(String[] args) throws IllegalArgumentException {
         if (args.length != 1) {
-            throw new IllegalArgumentException("invalid command");
+            throw new IllegalArgumentException(Consts.INVALID_COMMAND);
         }
         this.url = args[0];
     }
